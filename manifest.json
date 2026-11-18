@@ -1,0 +1,70 @@
+{
+  "manifest_version": "0.4",
+  "name": "osm-poi-mcp",
+  "display_name": "OpenStreetMap POI Search",
+  "version": "0.1.0",
+  "description": "Find OpenStreetMap businesses and places by category or tag, plus geocoding and reverse geocoding.",
+  "long_description": "Find businesses and public places from OpenStreetMap (restaurants, hotels, shops, pharmacies, EV chargers and 40+ other categories, or any raw OSM tag) by place name, bounding box or point plus radius, plus geocoding and reverse geocoding. No API key needed. Data (c) OpenStreetMap contributors, ODbL 1.0.",
+  "author": {
+    "name": "santex85",
+    "url": "https://github.com/santex85"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santex85/osm-poi-mcp"
+  },
+  "homepage": "https://github.com/santex85/osm-poi-mcp",
+  "support": "https://github.com/santex85/osm-poi-mcp/issues",
+  "license": "MIT",
+  "keywords": [
+    "openstreetmap",
+    "poi",
+    "geocoding",
+    "places",
+    "maps"
+  ],
+  "server": {
+    "type": "uv",
+    "entry_point": "src/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "src/server.py"
+      ],
+      "env": {
+        "MCP_TRANSPORT": "stdio"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "find_places",
+      "description": "Find points of interest (businesses and public places) in OpenStreetMap."
+    },
+    {
+      "name": "geocode",
+      "description": "Geocode a free-form address or place name with OSM Nominatim."
+    },
+    {
+      "name": "reverse_geocode",
+      "description": "Reverse-geocode coordinates to the nearest OSM address/place with Nominatim."
+    },
+    {
+      "name": "list_categories",
+      "description": "List the friendly POI categories accepted by find_places(categories=...) and the OSM tags each maps to, e.g. \"pharmacies\" -> [\"amenity=pharmacy\", \"healthcare=pharmacy\"]. For anything not listed, pass raw OSM tags to find_places(tags=[...]) - see https://wiki.openstreetmap.org/wiki/Map_features."
+    }
+  ],
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "linux",
+      "win32"
+    ],
+    "runtimes": {
+      "python": ">=3.10"
+    }
+  }
+}
