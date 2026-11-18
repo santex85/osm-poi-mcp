@@ -1,0 +1,10 @@
+version: 1
+name: osm-poi-mcp
+description: Find businesses and places from OpenStreetMap - POI search by category or tag in an area, bbox or radius, plus geocoding and reverse geocoding.
+runtime: python
+entry: src/server.py
+build:
+  install: python -m venv .venv && .venv/bin/pip install --no-cache-dir -r requirements.txt
+startCommand:
+  type: http
+  command: .venv/bin/python src/server.py
